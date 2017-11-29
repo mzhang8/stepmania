@@ -209,10 +209,11 @@ MutexImpl *MakeMutex( RageMutex *pParent )
 #include <dlfcn.h>
 #include "arch/ArchHooks/ArchHooks_Unix.h"
 // commented out to allow comilation on macOS 10.12.  -dguzek
-//#elif defined(MACOSX)
-//typedef int clockid_t;
-//static const clockid_t CLOCK_REALTIME = 0;
-//static const clockid_t CLOCK_MONOTONIC = 1;
+// unless you have macOS 10.11 or older.
+#elif defined(MACOSX)
+typedef int clockid_t;
+static const clockid_t CLOCK_REALTIME = 0;
+static const clockid_t CLOCK_MONOTONIC = 1;
 #endif // On MinGW clockid_t is defined in pthread.h
 namespace
 {

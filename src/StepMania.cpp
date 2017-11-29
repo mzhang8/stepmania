@@ -15,6 +15,7 @@
 #include "RageDisplay.h"
 #include "RageThreads.h"
 #include "LocalizedString.h"
+#include "StepManiaToApp.h"
 
 #include "arch/ArchHooks/ArchHooks.h"
 #include "arch/LoadingWindow/LoadingWindow.h"
@@ -791,6 +792,9 @@ int sm_main(int argc, char* argv[])
 
 	// Set this up next. Do this early, since it's needed for RageException::Throw.
 	LOG		= new RageLog;
+
+	// Run thread for listening to external app
+	STA     = new StepManiaToApp;
 
 	// Whew--we should be able to crash safely now!
 
